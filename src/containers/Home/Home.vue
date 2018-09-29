@@ -2,17 +2,17 @@
   <div class="home">
     <div class="up">
       <div class="header">
-        <div class="place" v-show="topNow">
+        <div class="place">
           <span class="iconfont icon-diliweizhi"></span>
           <span>北京西站</span>
           <span class="iconfont icon-jiantouarrow486"></span>
         </div>
-        <div class="search">
+        <div class="search" @click="goSearch">
           <span class="iconfont icon-sousuo"></span>
           <span>搜索饿了么商家、商品名称</span>
         </div>
       </div>
-      <div class="playnav" v-show="isUp">
+      <div class="playnav" >
         <mt-swipe :auto="0">
           <mt-swipe-item v-for="item in navliData">
             <div class="nav">
@@ -24,7 +24,7 @@
           </mt-swipe-item>
         </mt-swipe>
       </div>
-      <div class="intro" v-show="isUp">
+      <div class="intro" >
         <div class="left" v-for="item in introData">
           <h2>{{item.name}}</h2>
           <span class="title">{{item.title}}</span>
@@ -32,14 +32,14 @@
           <img src="../../assets/img/nav1.jpg" alt="">
         </div>
       </div>
-      <div class="playadv" v-show="isUp">
+      <div class="playadv">
         <mt-swipe :auto="4000">
           <mt-swipe-item v-for="item in advData">
             <div><img src="../../assets/img/nav1.jpg" alt=""></div>
           </mt-swipe-item>
         </mt-swipe>
       </div>
-      <div class="titleS" v-show="isUp">
+      <div class="titleS">
         推荐商家
       </div>
       <div class="navfour">
@@ -88,11 +88,13 @@
       </div>
 
     </div>
+    <tab-bar></tab-bar>
   </div>
 </template>
 
 <script>
   import GoodsList from '../../components/GoodsList/GoodsList.vue';
+  import TabBar from '../../components/TabBar/TabBar.vue';
     export default {
         name: "Home",
       data(){
@@ -186,6 +188,9 @@
 
           }
         },
+        goSearch(){         //跳转到搜索页面
+          this.$router.push({path:'/search'})
+        },
       //  点击选择
         sel(item){
           this.selWitch = item;
@@ -231,7 +236,8 @@
         }
       },
       components:{
-        GoodsList
+        GoodsList,
+        TabBar
       }
     }
 </script>

@@ -67,6 +67,9 @@
 
 <style scoped lang="scss">
 .goodslist{
+  height: 83vh;
+  overflow-y: auto;
+  padding-bottom: 9vh;
   .goods{
     padding: 22px 10px;
     background: #fff;
